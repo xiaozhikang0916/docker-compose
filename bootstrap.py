@@ -8,6 +8,7 @@ ARIA_NG_VERSION = '1.0.3'
 env = """ARIA2_TOKEN={ARIA2_TOKEN}
 BGMI_TOKEN={BGMI_TOKEN}
 LOCAL_TZ=Asia/Shanghai
+PORT=8888
         
 HOST_BGMI_PATH=./data
 UID={UID}
@@ -32,8 +33,8 @@ def main():
                                UID=os.getuid(),
                                GID=os.getgid()))
 
-            os.system('docker-compose up -d')
-            print('docker compose running in background with bgmi admin token '
+        os.system('docker-compose up -d')
+        print('docker compose running in background with bgmi admin token '
                   + ARIA2_TOKEN + ',bgmi admin token ' + BGMI_TOKEN)
 
 

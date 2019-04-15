@@ -1,3 +1,0 @@
-0 */2 * * * LC_ALL=en_US.UTF-8 /usr/local/bin/bgmi update --download
-0 */10 * * * LC_ALL=en_US.UTF-8 TRAVIS_CI=1 /usr/local/bin/bgmi cal --force-update --download-cover
-0 0 * * *  /bin/bash /root/.aria2/aria2_tracker_updater.sh

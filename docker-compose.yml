@@ -21,7 +21,7 @@ services:
   nginx:
     image: nginx:1.15.1-alpine
     ports:
-      - 2333:80
+      - "${PORT}:80"
     links:
       - aria2
       - bgmi
