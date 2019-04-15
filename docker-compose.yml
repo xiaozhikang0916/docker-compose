@@ -1,0 +1,50 @@
+version: '3.1'
+
+services:
+  aria2:
+    build: aria2
+    user: "${UID}:${GID}"
+    expose:
+      - 6800
+    networks:
+      - aria
+    environment:
+      - ARIA2_TOKEN=${ARIA2_TOKEN}
+      - BGMI_TOKEN=${BGMI_TOKEN}
+    volumes:
+      - ./aria2/.aria2/:/aria2/
+  #  cron:
+  #    build: cron
+  #    env_file:
+  #      - env
+
+  nginx:
+    image: nginx:1.15.1-alpine
+    ports:
+      - 2333:80
+    links:
+      - aria2
+      - bgmi
+    networks:
+      - aria
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ${HOST_BGMI_PATH}:/bgmi
+      - ./ariang/:/ariang/
+
+  bgmi:
+    build: bgmi
+    user: "${UID}:${GID}"
+    networks:
+      - aria
+    expose:
+      - 8888
+    environment:
+      - ARIA2_TOKEN=${ARIA2_TOKEN}
+      - BGMI_TOKEN=${BGMI_TOKEN}
+    volumes:
+      - ${HOST_BGMI_PATH}:/bgmi
+
+networks:
+  aria:
+    driver: bridge
