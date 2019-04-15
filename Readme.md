@@ -33,3 +33,15 @@ python bootstrap.py
 所有持久化的数据会储存在`./data`文件夹中, 番剧默认会位于
 `./data/bangumi` 如果你需要修改番剧保存地址可以直接修改
 `docker-compose.yml#services.bgmi.volumes`, 把对应的路径挂载到`/bgmi/bangumi`
+
+## todo
+
+还没找到一个好办法来运行定时任务, 比如更新aria2c的tracker列表, 
+调用`bgmi update -d`来下载番剧
+
+所以请手动添加这些命令到宿主机的crontab中.
+
+```crontab
+0 */2 * * *  cd /path/to/bgmi; /path/to/docker-compose run bgmi update -d
+0 */12 * * *  cd /path/to/bgmi; /path/to/docker-compose run bgmi cal --force-update --download-cover
+```
