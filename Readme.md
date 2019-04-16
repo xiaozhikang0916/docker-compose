@@ -21,7 +21,7 @@ python bootstrap.py
 
 在本文件夹内使用`docker-compose run bgmi`来代替`bgmi`命令
 
-**如果你修改了设置, 仍然需要通过**`docker-compose restart`**重启bgmi_http来让修改生效. **
+**如果你修改了设置, 仍然需要通过** `docker-compose restart` **重启bgmi_http来让修改生效**
 
 所有的文件会以当前的uid和gid进行写入
 
