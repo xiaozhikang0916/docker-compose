@@ -21,13 +21,13 @@ python bootstrap.py
 
 在本文件夹内使用`docker-compose run bgmi`来代替`bgmi`命令
 
-**如果你修改了设置, 仍然需要通过`docker-compose restart`重启bgmi_http来让修改生效. **
+**如果你修改了设置, 仍然需要通过**`docker-compose restart`**重启bgmi_http来让修改生效. **
 
 所有的文件会以当前的uid和gid进行写入
 
 ## 修改设置
 
-在运行过`bootstrap.py`后会在当前文件夹下新建一个`.env`文件,
+在运行过`bootstrap.py`后会在当前文件夹下生成一个`.env`文件,
 可以修改`PORT`来修改nginx最终监听的端口
 
 所有持久化的数据会储存在`./data`文件夹中, 番剧默认会位于
