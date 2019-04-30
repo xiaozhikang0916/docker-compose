@@ -4,6 +4,8 @@
 
 不再需要安装python和bgmi到本地
 
+持久化的数据会以当前的UID和GID保存
+
 如果你已经有一个nginx在运行, 可以去掉compose中的nginx,
 参照[nginx.conf](nginx/conf.d/nginx.conf)
 
