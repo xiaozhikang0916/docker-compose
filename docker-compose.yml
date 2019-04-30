@@ -13,6 +13,7 @@ services:
       - BGMI_TOKEN=${BGMI_TOKEN}
     volumes:
       - ./aria2/.aria2/:/aria2/
+      - ./downloads/:/downloads/
   #  cron:
   #    build: cron
   #    env_file:

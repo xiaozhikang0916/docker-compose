@@ -11,7 +11,7 @@ ENV PIP_ARGS='--no-cache-dir  -i https://mirrors.ustc.edu.cn/pypi/web/simple'
 
 COPY ./bgmi/requirements.txt /requirements.txt
 
-RUN pip install $PIP_ARGS https://github.com/BGmi/bgmi/tarball/f2d76a71b39ab1810915ad73b3ad849b3ce2306f
+RUN pip install $PIP_ARGS https://github.com/BGmi/bgmi/tarball/dev
 
 COPY ./entrypoint.sh /entrypoint.sh
 
