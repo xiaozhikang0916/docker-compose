@@ -2,6 +2,8 @@
 
 包括nginx, BGmi, bgmi_http aria2 aria2ng
 
+目前bgmi安装的是dev分支，还不太稳定
+
 不再需要安装python和bgmi到本地
 
 持久化的数据会以当前的UID和GID保存
@@ -25,8 +27,6 @@ cd bgmi
 在本文件夹内使用`docker-compose run bgmi`来代替`bgmi`命令
 
 **如果你修改了设置, 仍然需要通过** `docker-compose restart` **重启bgmi_http来让修改生效**
-
-所有的文件会以当前的uid和gid进行写入
 
 ## 修改设置
 
