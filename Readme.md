@@ -46,6 +46,7 @@ aria2默认的下载路径为`./data/downloads`
 
 ## 我咋像原来一样运行bgmi命令
 
+按照这个设置alias
 ```bash
-./bootstap.sh alias >> .bashrc
+./bootstap.sh alias
 ```
