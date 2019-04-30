@@ -1,43 +1,52 @@
 version: '3.1'
 
 services:
+
   aria2:
-    build: aria2
-    user: "${UID}:${GID}"
+    build:
+      context: aria2
+      args:
+        CURRENT_UID: ${CURRENT_UID}
+        CURRENT_GID: ${CURRENT_GID}
+    user: "${CURRENT_UID}:${CURRENT_GID}"
     expose:
       - 6800
     networks:
-      - aria
+      - bgmi
     environment:
       - ARIA2_TOKEN=${ARIA2_TOKEN}
       - BGMI_TOKEN=${BGMI_TOKEN}
     volumes:
       - ./aria2/.aria2/:/aria2/
-      - ./downloads/:/downloads/
-  #  cron:
-  #    build: cron
-  #    env_file:
-  #      - env
+      - ./data/downloads/:/downloads/
+      - ./.bgmi:/bgmi
 
   nginx:
-    image: nginx:1.15.1-alpine
+    image: nginx:1.16-alpine
     ports:
       - "${PORT}:80"
     links:
       - aria2
       - bgmi
     networks:
-      - aria
+      - bgmi
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      - ${HOST_BGMI_PATH}:/bgmi
       - ./ariang/:/ariang/
+      - ${HOST_BGMI_PATH}:/bgmi
 
   bgmi:
-    build: bgmi
-    user: "${UID}:${GID}"
+    build:
+      context: ./bgmi
+      args:
+        BGMI_VERSION: dev
+        CURRENT_UID: ${CURRENT_UID}
+        CURRENT_GID: ${CURRENT_GID}
+
+    user: "${CURRENT_UID}:${CURRENT_GID}"
+
     networks:
-      - aria
+      - bgmi
     expose:
       - 8888
     environment:
@@ -47,5 +56,5 @@ services:
       - ${HOST_BGMI_PATH}:/bgmi
 
 networks:
-  aria:
+  bgmi:
     driver: bridge
